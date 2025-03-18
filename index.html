@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Audio Visualizer</h1>
+        </header>
+        
+        <div class="upload-container">
+            <label for="audio-upload" class="upload-btn">Upload Audio File</label>
+            <input type="file" id="audio-upload" accept=".mp3,.wav" hidden>
+            <p id="file-name">No file selected</p>
+        </div>
+        
+        <div class="controls hidden" id="player-controls">
+            <audio id="audio-player" controls></audio>
+            <div class="visualization-controls">
+                <select id="visualization-style">
+                    <option value="waveform">Waveform</option>
+                    <option value="bars">Spectrum Bars</option>
+                    <option value="particles">Particle System</option>
+                    <option value="3d">3D Visualization</option>
+                </select>
+                <button id="theme-toggle">Dark Mode</button>
+                <button id="export-btn">Export Video</button>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="visualization-canvas"></canvas>
+            <div id="loading" class="hidden">Processing...</div>
+        </div>
+        
+        <div class="export-settings hidden" id="export-settings">
+            <h2>Export Settings</h2>
+            <div class="settings-group">
+                <label for="export-resolution">Resolution:</label>
+                <select id="export-resolution">
+                    <option value="720p">720p</option>
+                    <option value="1080p" selected>1080p</option>
+                    <option value="4k">4K</option>
+                </select>
+            </div>
+            <div class="settings-group">
+                <label for="export-format">Format:</label>
+                <select id="export-format">
+                    <option value="mp4" selected>MP4</option>
+                    <option value="webm">WebM</option>
+                </select>
+            </div>
+            <div class="settings-group">
+                <button id="start-export">Start Export</button>
+                <button id="cancel-export">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="audioAnalyzer.js"></script>
+    <script src="visualizers.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
